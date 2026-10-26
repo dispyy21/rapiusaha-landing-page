@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RapiUsaha — Urus Usaha Lebih Rapi, Tanpa Tambah Repot</title>
+  <meta name="description" content="Aplikasi pengelolaan usaha untuk UMKM di Indonesia. Catat penjualan, pantau stok otomatis, dan lihat laporan laba rugi dalam satu aplikasi mudah.">
+  <meta name="keywords" content="RapiUsaha, aplikasi UMKM, aplikasi kasir, pembukuan UMKM, kelola stok usaha, laporan laba rugi">
+  <meta name="author" content="RapiUsaha">
+
+  <!-- Open Graph / Meta Sosial -->
+  <meta property="og:title" content="RapiUsaha — Aplikasi Pengelolaan Usaha untuk UMKM">
+  <meta property="og:description" content="Catat penjualan, pantau stok, dan lihat laba dalam satu aplikasi. Coba gratis 14 hari tanpa kartu kredit.">
+  <meta property="og:image" content="./assets/images/hero-dashboard.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230F172A'/><text x='16' y='22' font-family='sans-serif' font-size='18' font-weight='bold' text-anchor='middle' fill='%2338BDF8'>R!</text></svg>">
+</head>
+<body>
+
+  <!-- Announcement Bar (Optional Polish) -->
+  <aside class="top-announcement" id="top-announcement">
+    <div class="container announcement-inner">
+      <span class="badge-pill">Promo Baru</span>
+      <span>Coba gratis 14 hari semua fitur Pro tanpa kartu kredit untuk pemilik usaha UMKM baru!</span>
+      <button type="button" class="announcement-cta" id="btn-announcement-cta" onclick="openRegisterModal('Coba Gratis 14 Hari')">Daftar Sekarang &rarr;</button>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+  <header class="site-header" id="site-header">
+    <div class="container navbar-container">
+      <a href="#hero" class="brand-logo" id="brand-logo" aria-label="Beranda RapiUsaha">
+        <span class="logo-icon">R!</span>
+        <span class="logo-text">RapiUsaha</span>
+      </a>
+
+      <nav class="nav-links" id="main-nav-links" aria-label="Menu Utama">
+        <a href="#manfaat" class="nav-link" id="nav-link-manfaat">Manfaat</a>
+        <a href="#fitur" class="nav-link" id="nav-link-fitur">Fitur</a>
+        <a href="#testimoni" class="nav-link" id="nav-link-testimoni">Testimoni</a>
+        <a href="#faq" class="nav-link" id="nav-link-faq">FAQ</a>
+        <a href="#kontak" class="nav-link" id="nav-link-kontak">Kontak</a>
+      </nav>
+
+      <div class="nav-actions" id="nav-actions">
+        <button type="button" class="btn-text" id="btn-nav-login" onclick="openLoginModal()">Masuk</button>
+        <button type="button" class="btn-primary" id="btn-nav-trial" onclick="openRegisterModal('Coba Gratis 14 Hari')">Coba gratis 14 hari</button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="mobile-toggle" id="btn-mobile-toggle" aria-label="Buka menu navigasi" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+      <div class="mobile-menu-content">
+        <a href="#manfaat" class="mobile-nav-link" onclick="closeMobileMenu()">Manfaat</a>
+        <a href="#fitur" class="mobile-nav-link" onclick="closeMobileMenu()">Fitur</a>
+        <a href="#testimoni" class="mobile-nav-link" onclick="closeMobileMenu()">Testimoni</a>
+        <a href="#faq" class="mobile-nav-link" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#kontak" class="mobile-nav-link" onclick="closeMobileMenu()">Kontak</a>
+        <div class="mobile-actions">
+          <button type="button" class="btn-secondary w-full" onclick="closeMobileMenu(); openLoginModal();">Masuk</button>
+          <button type="button" class="btn-primary w-full" onclick="closeMobileMenu(); openRegisterModal('Coba Gratis 14 Hari');">Coba gratis 14 hari</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="badge-tag" id="hero-badge">
+            <span class="badge-dot"></span>
+            APLIKASI PENGELOLAAN USAHA UNTUK UMKM
+          </div>
+          <h1 class="hero-headline" id="hero-headline">
+            Urus usaha lebih rapi, <br class="hidden-mobile"><span class="highlight-text">tanpa tambah repot.</span>
+          </h1>
+          <p class="hero-description" id="hero-description">
+            Catat penjualan, pantau stok, dan lihat laba dalam satu aplikasi. Tinggalkan rekap manual yang menyita waktu, fokus kembangkan usaha Anda.
+          </p>
+
+          <div class="hero-cta-group" id="hero-cta-group">
+            <button type="button" class="btn-primary btn-lg" id="btn-hero-trial" onclick="openRegisterModal('Coba Gratis 14 Hari')">
+              Coba gratis 14 hari
+              <svg class="btn-arrow-icon" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <button type="button" class="btn-secondary btn-lg" id="btn-hero-demo" onclick="openDemoModal()">
+              <svg class="btn-play-icon" viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+              </svg>
+              Lihat demo
+            </button>
+          </div>
+
+          <p class="hero-microcopy" id="hero-microcopy">
+            <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Tanpa kartu kredit
+            <span class="micro-sep">•</span>
+            <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor" width="14" height="14">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Bisa berhenti kapan saja
+          </p>
+        </div>
+
+        <div class="hero-visual" id="hero-visual">
+          <div class="dashboard-mockup-wrapper">
+            <div class="mockup-header-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="mockup-title">app.rapiusaha.id/dashboard</span>
+              <span class="mockup-live-status"><span class="pulse-dot"></span> Live Data</span>
+            </div>
+            <img src="./assets/images/hero-dashboard.jpg" alt="Preview Tampilan Dashboard RapiUsaha" class="mockup-image" id="hero-mockup-img" loading="eager">
+            <div class="mockup-caption">
+              <span>Satu tampilan ringkas untuk memantau usaha Anda setiap hari.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF / PARTNERS -->
+    <section class="social-proof-section" id="social-proof">
+      <div class="container">
+        <p class="social-proof-heading" id="social-proof-heading">
+          Membantu <strong>1.200+</strong> pemilik usaha di Indonesia mengelola bisnis sehari-hari
+        </p>
+        <div class="partner-grid" id="partner-grid">
+          <div class="partner-card">
+            <span class="partner-icon">☕</span>
+            <span class="partner-name">Kedai Sore</span>
+            <span class="partner-category">Kuliner & Kopi</span>
+          </div>
+          <div class="partner-card">
+            <span class="partner-icon">🏪</span>
+            <span class="partner-name">Toko Berkah</span>
+            <span class="partner-category">Retail Kelontong</span>
+          </div>
+          <div class="partner-card">
+            <span class="partner-icon">🥐</span>
+            <span class="partner-name">Roti Pagi</span>
+            <span class="partner-category">Bakery & Pastry</span>
+          </div>
+          <div class="partner-card">
+            <span class="partner-icon">🥤</span>
+            <span class="partner-name">Kopi Tetangga</span>
+            <span class="partner-category">Coffee Shop</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION MANFAAT (BENEFITS) -->
+    <section class="section-benefits" id="manfaat">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker" id="kicker-manfaat">MANFAAT UNTUK USAHA ANDA</span>
+          <h2 class="section-title" id="title-manfaat">Lebih sedikit administrasi. <br class="hidden-mobile">Lebih banyak kendali.</h2>
+          <p class="section-subtext" id="subtext-manfaat">
+            Dari warung hingga toko retail, RapiUsaha dirancang agar pekerjaan harian Anda terasa jauh lebih ringan dan terarah.
+          </p>
+        </div>
+
+        <div class="benefits-grid" id="benefits-grid">
+          <!-- Benefit 1 -->
+          <article class="benefit-card" id="benefit-card-1">
+            <div class="benefit-card-top">
+              <span class="benefit-num">01</span>
+              <div class="benefit-badge-icon">⏱️</div>
+            </div>
+            <h3 class="benefit-title">Waktu kembali untuk usaha</h3>
+            <p class="benefit-desc">
+              Penjualan tercatat otomatis saat transaksi. Tak perlu lagi memindahkan catatan berceceran ke banyak buku atau spreadsheet larut malam.
+            </p>
+            <div class="benefit-footer">
+              <span class="benefit-tag">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                Kurangi pekerjaan berulang
+              </span>
+            </div>
+          </article>
+
+          <!-- Benefit 2 -->
+          <article class="benefit-card" id="benefit-card-2">
+            <div class="benefit-card-top">
+              <span class="benefit-num">02</span>
+              <div class="benefit-badge-icon">📦</div>
+            </div>
+            <h3 class="benefit-title">Stok lebih terkendali</h3>
+            <p class="benefit-desc">
+              Ketahui produk yang menipis sebelum kehabisan di depan pembeli. Belanja stok sesuai kebutuhan riil, bukan sekadar tebakan atau perkiraan.
+            </p>
+            <div class="benefit-footer">
+              <span class="benefit-tag">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                Hindari kehilangan penjualan
+              </span>
+            </div>
+          </article>
+
+          <!-- Benefit 3 -->
+          <article class="benefit-card" id="benefit-card-3">
+            <div class="benefit-card-top">
+              <span class="benefit-num">03</span>
+              <div class="benefit-badge-icon">📈</div>
+            </div>
+            <h3 class="benefit-title">Keputusan lebih jelas</h3>
+            <p class="benefit-desc">
+              Lihat pemasukan, pengeluaran, dan laba bersih harian dalam hitungan detik. Tahu persis produk mana yang paling menguntungkan usaha Anda.
+            </p>
+            <div class="benefit-footer">
+              <span class="benefit-tag">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+                Pahami kondisi usaha Anda
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION FITUR UTAMA -->
+    <section class="section-features" id="fitur">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker" id="kicker-fitur">FITUR UTAMA</span>
+          <h2 class="section-title" id="title-fitur">Semua kebutuhan harian, di satu tempat.</h2>
+          <p class="section-subtext" id="subtext-fitur">
+            Mudah dipakai sejak hari pertama. Tidak perlu keahlian akuntansi rumit atau menginstal aplikasi tambahan yang membingungkan.
+          </p>
+        </div>
+
+        <div class="features-layout" id="features-layout">
+          <!-- Visual Workflow Illustration -->
+          <div class="features-visual">
+            <div class="flow-card-wrapper">
+              <img src="./assets/images/feature-flow.jpg" alt="Alur Kerja Bisnis RapiUsaha: Transaksi ke Stok dan Laporan" class="flow-image" id="feature-flow-img" loading="lazy">
+              <div class="flow-caption">
+                <span class="flow-badge">Alur Otomatis</span>
+                <span>Transaksi &rarr; stok diperbarui &rarr; laporan tersedia. Data terhubung tanpa mencatat dua kali.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature List -->
+          <div class="features-list" id="features-list">
+            <div class="feature-item" id="feature-item-1">
+              <div class="feature-check-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="feature-text">
+                <h3 class="feature-item-title">Pencatatan penjualan kasir</h3>
+                <p class="feature-item-desc">Catat transaksi kasir dengan cepat, terima pembayaran QRIS/Tunai, dan kirim struk digital langsung ke WhatsApp pelanggan.</p>
+              </div>
+            </div>
+
+            <div class="feature-item" id="feature-item-2">
+              <div class="feature-check-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="feature-text">
+                <h3 class="feature-item-title">Stok otomatis & pengingat</h3>
+                <p class="feature-item-desc">Stok otomatis berkurang tepat saat item terjual, lengkap dengan notifikasi peringatan sebelum stok barang menipis.</p>
+              </div>
+            </div>
+
+            <div class="feature-item" id="feature-item-3">
+              <div class="feature-check-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="feature-text">
+                <h3 class="feature-item-title">Laporan laba rugi instan</h3>
+                <p class="feature-item-desc">Pantau hasil usaha harian atau bulanan tanpa hitung manual. Ketahui omzet kotor, modal, dan laba bersih usaha secara transparan.</p>
+              </div>
+            </div>
+
+            <div class="feature-item" id="feature-item-4">
+              <div class="feature-check-icon">
+                <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="feature-text">
+                <h3 class="feature-item-title">Akses untuk tim & kasir</h3>
+                <p class="feature-item-desc">Atur hak akses kasir agar data penting tetap aman, dan pantau aktivitas usaha langsung dari smartphone Anda dari mana saja.</p>
+              </div>
+            </div>
+
+            <!-- Mid-Section CTA Banner -->
+            <div class="feature-cta-box" id="feature-cta-box">
+              <div class="cta-box-content">
+                <h4 class="cta-box-title">Ingin merasakan mudahnya kelola usaha?</h4>
+                <p class="cta-box-sub">Mulai dalam 5 menit. Tim kami siap membantu saat Anda membutuhkan panduan.</p>
+              </div>
+              <button type="button" class="btn-primary" id="btn-feature-cta" onclick="openRegisterModal('Coba Gratis 14 Hari')">Coba gratis 14 hari</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION PAKET & HARGA (PRICING & PURCHASE) -->
+    <section class="section-pricing" id="harga">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">PILIHAN PAKET USAHA</span>
+          <h2 class="section-title">Investasi terjangkau untuk hasil maksimal</h2>
+          <p class="section-subtext">Pilih paket yang paling pas untuk skala usaha Anda saat ini. Bisa upgrade atau berhenti kapan saja.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Trial Card -->
+          <div class="pricing-card">
+            <div class="pricing-badge-label">Uji Coba</div>
+            <h3 class="plan-name">Coba Gratis</h3>
+            <p class="plan-desc">Coba semua fitur lengkap untuk membuktikan kemudahannya.</p>
+            <div class="plan-price">
+              <span class="currency">Rp</span>
+              <span class="amount">0</span>
+              <span class="period">/ 14 hari</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ Akses penuh seluruh fitur POS</li>
+              <li>✓ Pencatatan stok & peringatan minimum</li>
+              <li>✓ Laporan laba rugi otomatis</li>
+              <li>✓ Dukungan panduan awal</li>
+            </ul>
+            <button type="button" class="btn-secondary w-full" onclick="openRegisterModal('Coba Gratis 14 Hari')">Mulai Gratis</button>
+          </div>
+
+          <!-- Starter Card (Recommended) -->
+          <div class="pricing-card popular">
+            <div class="popular-ribbon">Paling Diminati UMKM</div>
+            <div class="pricing-badge-label">Paket Rekomendasi</div>
+            <h3 class="plan-name">UMKM Dasar</h3>
+            <p class="plan-desc">Cocok untuk warung, kedai kopi, dan toko retail mandiri.</p>
+            <div class="plan-price">
+              <span class="currency">Rp</span>
+              <span class="amount">79.000</span>
+              <span class="period">/ bulan</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ Transaksi kasir tanpa batas</li>
+              <li>✓ Manajemen stok hingga 1.000 produk</li>
+              <li>✓ Laporan harian & bulanan siap cetak</li>
+              <li>✓ Kirim struk WhatsApp otomatis</li>
+              <li>✓ Dukungan prioritas via WhatsApp</li>
+            </ul>
+            <button type="button" class="btn-primary w-full" onclick="openRegisterModal('UMKM Dasar (Rp 79.000/bln)')">Beli Paket Ini</button>
+          </div>
+
+          <!-- Pro Card -->
+          <div class="pricing-card">
+            <div class="pricing-badge-label">Multi Outlet</div>
+            <h3 class="plan-name">UMKM Tumbuh</h3>
+            <p class="plan-desc">Untuk usaha yang memiliki beberapa cabang dan banyak karyawan.</p>
+            <div class="plan-price">
+              <span class="currency">Rp</span>
+              <span class="amount">149.000</span>
+              <span class="period">/ bulan</span>
+            </div>
+            <ul class="plan-features">
+              <li>✓ Semua fitur paket UMKM Dasar</li>
+              <li>✓ Manajemen multi-cabang (hingga 3 outlet)</li>
+              <li>✓ Pengaturan hak akses staf kasir & admin</li>
+              <li>✓ Analisis produk terlaris & profit margin</li>
+              <li>✓ Konsultasi bisnis rutin</li>
+            </ul>
+            <button type="button" class="btn-secondary w-full" onclick="openRegisterModal('UMKM Tumbuh (Rp 149.000/bln)')">Pilih Paket Pro</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION TESTIMONI & METRICS -->
+    <section class="section-testimonials" id="testimoni">
+      <div class="container">
+        <div class="testimonials-top-bar">
+          <div>
+            <span class="section-kicker" id="kicker-testimoni">CERITA PENGGUNA</span>
+            <h2 class="section-title" id="title-testimoni">Usaha mereka lebih rapi. <br class="hidden-mobile">Kini giliran Anda.</h2>
+            <p class="section-subtext" id="subtext-testimoni">
+              Pemilik usaha seperti Anda sudah memulai langkah yang lebih sederhana dan efisien.
+            </p>
+          </div>
+
+          <!-- Metrics Box -->
+          <div class="metrics-card" id="metrics-card">
+            <div class="metric-item">
+              <span class="metric-val">1.200+</span>
+              <span class="metric-lbl">Usaha telah bergabung</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-val">4,8/5</span>
+              <span class="metric-lbl">Penilaian pengguna</span>
+            </div>
+            <div class="metric-sep"></div>
+            <div class="metric-item">
+              <span class="metric-val">30+</span>
+              <span class="metric-lbl">Kota di Indonesia</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonials-grid" id="testimonials-grid">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card" id="testimonial-card-1">
+            <div class="star-rating" aria-label="Rating 5 bintang">
+              ★★★★★
+            </div>
+            <blockquote class="testimonial-quote">
+              "Dulu saya rekap penjualan sampai malam dan sering selisih uang kas. Sekarang selesai tutup toko, laporan laba rugi sudah langsung siap. Saya punya lebih banyak waktu santai untuk keluarga."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar bg-indigo">AF</div>
+              <div class="author-meta">
+                <span class="author-name">Arga Faza Antora</span>
+                <span class="author-biz">Pemilik Toko Berkah • Bandung</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card" id="testimonial-card-2">
+            <div class="star-rating" aria-label="Rating 5 bintang">
+              ★★★★★
+            </div>
+            <blockquote class="testimonial-quote">
+              "Stok bahan baku kopi dan sirup jadi jauh lebih gampang dipantau. Saya tahu kapan harus belanja ulang dan menu mana yang paling laris, meskipun saya sedang tidak berada di kedai."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar bg-emerald">DP</div>
+              <div class="author-meta">
+                <span class="author-name">Dimas Pratama</span>
+                <span class="author-biz">Pemilik Kedai Sore • Yogyakarta</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 (Extra Realistic Proof) -->
+          <div class="testimonial-card" id="testimonial-card-3">
+            <div class="star-rating" aria-label="Rating 5 bintang">
+              ★★★★★
+            </div>
+            <blockquote class="testimonial-quote">
+              "Kasir baru pun bisa langsung pakai tanpa perlu training berhari-hari. Kirim struk ke pembeli via WhatsApp juga bikin toko kami terlihat jauh lebih profesional dan modern."
+            </blockquote>
+            <div class="testimonial-author">
+              <div class="author-avatar bg-amber">RA</div>
+              <div class="author-meta">
+                <span class="author-name">Rina Andayani</span>
+                <span class="author-biz">Pemilik Roti Pagi • Surabaya</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION FAQ -->
+    <section class="section-faq" id="faq">
+      <div class="container">
+        <div class="faq-layout">
+          <div class="faq-sidebar">
+            <span class="section-kicker" id="kicker-faq">PERTANYAAN UMUM</span>
+            <h2 class="section-title" id="title-faq">Masih ingin tahu lebih lanjut?</h2>
+            <p class="section-subtext" id="subtext-faq">
+              Temukan jawaban atas pertanyaan yang sering diajukan sebelum mulai merapikan usaha Anda.
+            </p>
+            <div class="faq-support-box">
+              <p>Belum menemukan jawaban yang Anda cari?</p>
+              <a href="#kontak" class="link-contact-support">Hubungi tim RapiUsaha &rarr;</a>
+            </div>
+          </div>
+
+          <div class="faq-accordion-list" id="faq-accordion-list">
+            <!-- FAQ 1 -->
+            <div class="faq-item active" id="faq-item-1">
+              <button type="button" class="faq-question" aria-expanded="true" onclick="toggleFaq(1)">
+                <span>Apa yang saya dapatkan saat coba gratis?</span>
+                <span class="faq-icon" id="faq-icon-1">&minus;</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-1" style="display: block;">
+                <p>Anda mendapatkan akses penuh ke seluruh fitur RapiUsaha selama 14 hari, termasuk pencatatan penjualan kasir, manajemen stok otomatis, laporan laba rugi, dan akses tim. Tidak perlu memasukkan kartu kredit dan tidak ada biaya tersembunyi apa pun.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item" id="faq-item-2">
+              <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(2)">
+                <span>Berapa biaya setelah masa coba gratis berakhir?</span>
+                <span class="faq-icon" id="faq-icon-2">&#43;</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-2">
+                <p>Setelah masa coba 14 hari selesai, Anda dapat memilih paket berlangganan mulai dari <strong>Rp79.000/bulan</strong> untuk paket UMKM Dasar. Anda juga bebas memilih untuk tidak melanjutkan langganan tanpa denda atau komitmen apa pun.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item" id="faq-item-3">
+              <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(3)">
+                <span>Apakah cocok untuk pemula yang gaptek?</span>
+                <span class="faq-icon" id="faq-icon-3">&#43;</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-3">
+                <p>Sangat cocok! RapiUsaha didesain khusus bagi pemilik usaha lokal dengan bahasa Indonesia yang jelas, tombol besar, dan alur navigasi yang intuitif. Sebagian besar mitra kami dapat mengoperasikannya dengan lancar hanya dalam 5 menit pertama.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item" id="faq-item-4">
+              <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(4)">
+                <span>Apakah data usaha dan penjualan saya aman?</span>
+                <span class="faq-icon" id="faq-icon-4">&#43;</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-4">
+                <p>Keamanan data Anda adalah prioritas nomor satu kami. Seluruh data transaksi dienkripsi dengan standar industri SSL/TLS dan dibackup otomatis setiap hari di server cloud terpercaya. Hanya Anda dan staf yang Anda beri izin yang dapat melihat data tersebut.</p>
+              </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item" id="faq-item-5">
+              <button type="button" class="faq-question" aria-expanded="false" onclick="toggleFaq(5)">
+                <span>Bagaimana jika saya membutuhkan bantuan teknis?</span>
+                <span class="faq-icon" id="faq-icon-5">&#43;</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-5">
+                <p>Tim Customer Success RapiUsaha siap mendampingi Anda melalui WhatsApp resmi dan live chat setiap hari Senin hingga Sabtu. Kami juga menyediakan panduan video ringkas dan sesi onboarding gratis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION FORMULIR KONTAK & KONSULTASI (MEMENUHI SYARAT FORM KONTAK TUGAS) -->
+    <section class="section-contact" id="kontak">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info">
+            <span class="section-kicker">KONSULTASI & BANTUAN</span>
+            <h2 class="contact-title">Punya Pertanyaan Seputar Usaha Anda?</h2>
+            <p class="contact-desc">
+              Tim spesialis UMKM kami siap membantu memetakan kebutuhan sistem kasir, stok, dan pencatatan laporan toko Anda.
+            </p>
+
+            <div class="contact-points">
+              <div class="point-item">
+                <div class="point-icon">💬</div>
+                <div>
+                  <strong>WhatsApp Resmi</strong>
+                  <p>+62 812-3456-7890 (Respon cepat)</p>
+                </div>
+              </div>
+              <div class="point-item">
+                <div class="point-icon">✉️</div>
+                <div>
+                  <strong>Email Dukungan</strong>
+                  <p>halo@rapiusaha.id</p>
+                </div>
+              </div>
+              <div class="point-item">
+                <div class="point-icon">📍</div>
+                <div>
+                  <strong>Kantor Dukungan Mitra</strong>
+                  <p>Jakarta Selatan & Bandung, Indonesia</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap">
+            <form id="contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
+              <h3 class="form-heading">Kirim Pesan / Konsultasi</h3>
+
+              <div class="form-group">
+                <label for="contact-name">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="contact-name" name="name" placeholder="Contoh: Budi Santoso" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-wa">Nomor WhatsApp <span class="required">*</span></label>
+                  <input type="tel" id="contact-wa" name="phone" placeholder="0812xxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="email" placeholder="budi@contoh.id">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-biz-type">Jenis Usaha Anda</label>
+                <select id="contact-biz-type" name="biz_type">
+                  <option value="Kuliner / Coffee Shop">Kuliner / Coffee Shop / Resto</option>
+                  <option value="Toko Kelontong / Retail">Toko Kelontong / Swalayan / Retail</option>
+                  <option value="Fashion & Aksesoris">Fashion & Aksesoris</option>
+                  <option value="Jasa / Bengkel / Salon">Jasa / Bengkel / Salon</option>
+                  <option value="Lainnya">Bidang Usaha Lainnya</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Pertanyaan atau Kebutuhan Usaha <span class="required">*</span></label>
+                <textarea id="contact-message" name="message" rows="3" placeholder="Tuliskan kendala pencatatan atau pertanyaan Anda..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary w-full" id="btn-submit-contact">
+                Kirim Pesan Konsultasi
+              </button>
+
+              <div id="contact-feedback" class="form-feedback hidden"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM CTA BANNER -->
+    <section class="bottom-cta-section" id="bottom-cta">
+      <div class="container">
+        <div class="bottom-cta-card">
+          <div class="cta-glow"></div>
+          <h2 class="bottom-cta-title" id="title-bottom-cta">Mulai usaha yang lebih rapi hari ini.</h2>
+          <p class="bottom-cta-sub" id="subtext-bottom-cta">
+            Coba semua fitur gratis selama 14 hari. Setelah itu, pilih paket mulai <strong>Rp79.000/bulan</strong> sesuai skala dan kebutuhan usaha Anda.
+          </p>
+
+          <div class="bottom-cta-actions">
+            <button type="button" class="btn-primary btn-lg" id="btn-bottom-trial" onclick="openRegisterModal('Coba Gratis 14 Hari')">
+              Coba gratis 14 hari
+              <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+            </button>
+            <button type="button" class="btn-secondary btn-lg" onclick="openDemoModal()">
+              Lihat Demo Interaktif
+            </button>
+          </div>
+
+          <p class="bottom-cta-microcopy" id="microcopy-bottom-cta">
+            Tanpa kartu kredit • Tanpa komitmen berlangganan • Setup dalam 5 menit
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand-col">
+        <a href="#hero" class="brand-logo footer-logo">
+          <span class="logo-icon">R!</span>
+          <span class="logo-text">RapiUsaha</span>
+        </a>
+        <p class="footer-tagline">
+          Teman terpercaya pemilik UMKM untuk mengelola penjualan, stok otomatis, dan keuangan usaha lebih praktis.
+        </p>
+        <div class="footer-social-links">
+          <a href="#" aria-label="Instagram" class="social-link">📸</a>
+          <a href="#" aria-label="WhatsApp" class="social-link">💬</a>
+          <a href="#" aria-label="LinkedIn" class="social-link">💼</a>
+          <a href="#" aria-label="YouTube" class="social-link">▶️</a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">Produk</h4>
+        <ul class="footer-list">
+          <li><a href="#manfaat">Manfaat</a></li>
+          <li><a href="#fitur">Fitur Utama</a></li>
+          <li><a href="#harga">Pilihan Paket</a></li>
+          <li><a href="#testimoni">Cerita Mitra</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">Bantuan & Kontak</h4>
+        <ul class="footer-list">
+          <li><a href="#kontak">Pusat Bantuan</a></li>
+          <li><a href="#kontak">Hubungi Kami</a></li>
+          <li><a href="mailto:halo@rapiusaha.id">halo@rapiusaha.id</a></li>
+          <li><a href="https://wa.me/6281234567890" target="_blank" rel="noopener">WhatsApp Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-col-title">Tugas & Mitra</h4>
+        <p class="footer-task-info">
+          <strong>Pekan 4:</strong> Landing Page Development & Deployment.<br>
+          Mitra: RapiUsaha UMKM.
+        </p>
+        <div class="deployment-badge">
+          <span class="status-indicator"></span> Siap Live di Vercel
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom-inner">
+        <p class="copyright-text">
+          &copy; 2026 RapiUsaha. Hak cipta dilindungi.
+        </p>
+        <div class="footer-legal-links">
+          <a href="#">Kebijakan Privasi</a>
+          <span class="sep">•</span>
+          <a href="#">Syarat & Ketentuan</a>
+          <span class="sep">•</span>
+          <a href="#">Status Server</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 1: FORMULIR PENDAFTARAN & PEMBELIAN (WORKING FORM) -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="register-modal" role="dialog" aria-modal="true" aria-labelledby="modal-reg-title">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closeRegisterModal()" aria-label="Tutup form">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill">Langkah Awal Sukses</span>
+        <h3 class="modal-title" id="modal-reg-title">Mulai Akses RapiUsaha</h3>
+        <p class="modal-subtitle">Isi data singkat berikut untuk langsung mengaktifkan akun usaha Anda.</p>
+      </div>
+
+      <form id="order-form" class="modal-form" onsubmit="handleOrderSubmit(event)">
+        <div class="form-group">
+          <label for="order-plan">Paket yang Dipilih</label>
+          <select id="order-plan" name="plan" class="form-control">
+            <option value="Coba Gratis 14 Hari">Coba Gratis 14 Hari (Rp 0 - Tanpa Kartu Kredit)</option>
+            <option value="UMKM Dasar (Rp 79.000/bln)">UMKM Dasar (Rp 79.000 / bulan)</option>
+            <option value="UMKM Tumbuh (Rp 149.000/bln)">UMKM Tumbuh (Rp 149.000 / bulan)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="order-owner-name">Nama Pemilik Usaha <span class="required">*</span></label>
+          <input type="text" id="order-owner-name" class="form-control" placeholder="Contoh: Siti Rahma" required>
+        </div>
+
+        <div class="form-group">
+          <label for="order-biz-name">Nama Toko / Brand Usaha <span class="required">*</span></label>
+          <input type="text" id="order-biz-name" class="form-control" placeholder="Contoh: Kopi Manis Sejahtera" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-wa">WhatsApp (Untuk Akses Akun) <span class="required">*</span></label>
+            <input type="tel" id="order-wa" class="form-control" placeholder="0812xxxxxxxx" required>
+          </div>
+          <div class="form-group">
+            <label for="order-category">Kategori Usaha</label>
+            <select id="order-category" class="form-control">
+              <option value="Kuliner / Minuman">Kuliner / Minuman</option>
+              <option value="Toko Kelontong">Toko Kelontong / Retail</option>
+              <option value="Fashion / Pakaian">Fashion / Pakaian</option>
+              <option value="Jasa / Servis">Jasa / Servis</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary w-full btn-lg" id="btn-submit-order">
+          Aktifkan Akun & Dapatkan Akses Sekarang
+        </button>
+
+        <p class="form-privacy-note">
+          🔒 Data usaha Anda dijamin aman & terenkripsi. Tanpa tagihan otomatis.
+        </p>
+
+        <div id="order-feedback" class="form-feedback hidden"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 2: INTERACTIVE DEMO SIMULATOR (SHOWCASE WOW FACTOR)-->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-demo-title">
+    <div class="modal-box modal-wide">
+      <button type="button" class="modal-close" onclick="closeDemoModal()" aria-label="Tutup demo">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill bg-emerald-light">Simulasi Langsung</span>
+        <h3 class="modal-title" id="modal-demo-title">Simulasi Kasir & Stok RapiUsaha</h3>
+        <p class="modal-subtitle">Coba klik tombol menu di bawah untuk melihat bagaimana stok berkurang dan total otomatis terhitung!</p>
+      </div>
+
+      <div class="demo-interactive-container">
+        <!-- Interactive POS Simulator -->
+        <div class="demo-pos-grid">
+          <!-- Item List -->
+          <div class="demo-products-area">
+            <h4>Pilih Produk Transaksi:</h4>
+            <div class="product-buttons-grid">
+              <button type="button" class="demo-item-btn" onclick="addDemoItem('Kopi Susu Gula Aren', 18000)">
+                <span class="d-name">☕ Kopi Susu Gula Aren</span>
+                <span class="d-price">Rp 18.000</span>
+                <span class="d-stock" id="stock-item-1">Stok: 12</span>
+              </button>
+              <button type="button" class="demo-item-btn" onclick="addDemoItem('Roti Bakar Cokelat', 15000)">
+                <span class="d-name">🍞 Roti Bakar Cokelat</span>
+                <span class="d-price">Rp 15.000</span>
+                <span class="d-stock" id="stock-item-2">Stok: 8</span>
+              </button>
+              <button type="button" class="demo-item-btn" onclick="addDemoItem('Es Teh Melati Jumbo', 7000)">
+                <span class="d-name">🧋 Es Teh Melati Jumbo</span>
+                <span class="d-price">Rp 7.000</span>
+                <span class="d-stock" id="stock-item-3">Stok: 25</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Receipt & Cart -->
+          <div class="demo-cart-area">
+            <h4>Struk Transaksi Kasir</h4>
+            <div class="demo-cart-list" id="demo-cart-list">
+              <p class="empty-cart-hint">Belum ada item dipilih. Klik salah satu produk di sebelah kiri.</p>
+            </div>
+
+            <div class="demo-cart-summary">
+              <div class="cart-total-row">
+                <span>Total Penjualan:</span>
+                <strong id="demo-total-amount">Rp 0</strong>
+              </div>
+              <button type="button" class="btn-primary w-full" id="btn-demo-checkout" onclick="checkoutDemoOrder()" disabled>
+                Proses Transaksi & Update Stok
+              </button>
+              <button type="button" class="btn-text btn-sm w-full" onclick="resetDemo()">Reset Demo</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="demo-status-message" class="demo-status-box hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL 3: LOGIN MODAL (FOR EXISTING USERS) -->
+  <!-- ======================================================== -->
+  <div class="modal-backdrop" id="login-modal" role="dialog" aria-modal="true" aria-labelledby="modal-login-title">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closeLoginModal()" aria-label="Tutup form login">&times;</button>
+      <div class="modal-header">
+        <span class="badge-pill">Portal Mitra</span>
+        <h3 class="modal-title" id="modal-login-title">Masuk ke Dashboard</h3>
+        <p class="modal-subtitle">Buka sistem kasir dan pembukuan usaha Anda dari perangkat mana saja.</p>
+      </div>
+
+      <form id="login-form" class="modal-form" onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label for="login-email">Email Terdaftar atau Nomor WhatsApp <span class="required">*</span></label>
+          <input type="text" id="login-email" class="form-control" placeholder="Contoh: pemilik@toko.id atau 0812xxxxxxxx" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-pin">PIN Kasir / Kata Sandi</label>
+          <input type="password" id="login-pin" class="form-control" placeholder="Masukkan 6-digit PIN atau password" value="123456">
+          <span style="font-size: 0.75rem; color: var(--text-light); margin-top: 4px; display: block;">Default PIN demo: 123456</span>
+        </div>
+
+        <button type="submit" class="btn-primary w-full btn-lg" id="btn-submit-login">
+          Masuk ke Dashboard
+        </button>
+
+        <p class="form-privacy-note">
+          Belum punya akun? <a href="javascript:void(0)" onclick="closeLoginModal(); openRegisterModal('Coba Gratis 14 Hari');" style="color: var(--primary); font-weight: 600; text-decoration: underline;">Daftar Coba Gratis 14 Hari di sini</a>
+        </p>
+
+        <div id="login-feedback" class="form-feedback hidden"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
